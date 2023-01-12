@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
+import edu.pdx.cs410J.lang.Cow;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -20,6 +21,12 @@ public class StudentTest
     String name = "Pat";
     var pat = new Student(name, new ArrayList<>(), 0.0, "Doesn't matter");
     assertThat(pat.getName(), equalTo(name));
+  }
+
+  @Test
+  void allStudentsSayThisClassIsTooMuchWork() {
+    Student student = new Student("Name", new ArrayList<>(), 0.0, "Doesn't matter");
+    assertThat(student.says(), equalTo("This class is too much work"));
   }
 
 }
