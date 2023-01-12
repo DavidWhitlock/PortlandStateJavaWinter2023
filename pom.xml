@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!--
+
+Replace the strings "YourUserId" and "YourGitHubUser" in this file
+accordingly
+
+-->
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>cs410j</artifactId>
+    <groupId>io.github.davidwhitlock.cs410J</groupId>
+    <version>2023.0.0</version>
+  </parent>
+  <groupId>edu.pdx.cs410J.YourUserId</groupId>
+  <artifactId>PortlandStateJavaWinter2023</artifactId>
+  <version>2023.0.0</version>
+
+  <packaging>pom</packaging>
+  <name>PSUJavaWinter2023</name>
+  <description>Source code written in the Winter 2023 offering of Advanced Programming with Java</description>
+  <url>http://YourGitHubUserInLowerCase.github.io/PortlandStateJavaWinter2023</url>
+
+  <modules>
+  </modules>
+
+  <inceptionYear>2023</inceptionYear>
+  <organization>
+    <name>Portland State University</name>
+    <url>http://www.pdx.edu</url>
+  </organization>
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/YourGitHubUser/PortlandStateJavaWinter2023/issues</url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>whitlock</id>
+      <name>David Whitlock</name>
+      <email>whitlock@cs.pdx.edu</email>
+      <url>http://www.cs.pdx.edu/~whitlock</url>
+      <organization>PSU Department of Computer Science</organization>
+      <organizationUrl>http://www.cs.pdx.edu</organizationUrl>
+      <roles>
+        <role>Professor</role>
+      </roles>
+      <timezone>-7</timezone>
+    </developer>
+  </developers>
+
+  <repositories>
+    <repository>
+      <id>maven-snapshots</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <topSiteURL>scm:git:git@github.com:YourGithubUser/PortlandStateJavaWinter2023.git</topSiteURL>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <scmBranch>gh-pages</scmBranch>
+          <tryUpdate>true</tryUpdate>
+          <addUniqueDirectory>true</addUniqueDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <connection>scm:git:git@github.com:YourGithubUser/PortlandStateJavaWinter2023.git</connection>
+  </scm>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <site>
+      <id>gh-pages</id>
+      <name>GitHub Pages</name>
+      <url>scm:git:git@github.com:YourGithubUser/PortlandStateJavaWinter2023.git</url>
+    </site>
+  </distributionManagement>
+
+</project>
