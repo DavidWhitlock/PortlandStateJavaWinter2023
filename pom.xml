@@ -24,6 +24,7 @@ accordingly
   <url>http://YourGitHubUserInLowerCase.github.io/PortlandStateJavaWinter2023</url>
 
   <modules>
+    <module>student</module>
   </modules>
 
   <inceptionYear>2023</inceptionYear>
