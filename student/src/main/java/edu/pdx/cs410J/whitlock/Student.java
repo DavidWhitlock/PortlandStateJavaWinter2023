@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */                                                                                 
 public class Student extends Human {
 
+  static final String MISSING_ARGUMENTS = "Missing command line arguments. To run this program, please provide the following in order: name, gender, GPA, and one or more classes.";
+  static final String UNKNOWN_GENDER = "The gender is invalid. The second argument is gender. To run this program, please provide the following in order: name, gender, GPA, and a class/classes.";
   private final ArrayList<String> classes;
 
   /**
@@ -68,6 +70,21 @@ public class Student extends Human {
    * standard out by invoking its <code>toString</code> method.
    */
   public static void main(String[] args) {
-    System.err.println("Missing command line arguments");
+    if (args.length == 0) {
+      System.err.println(MISSING_ARGUMENTS);
+      return;
+    }
+
+    String gender = args[1];
+
+    if (!genderIsKnown(gender)) {
+      System.err.println(UNKNOWN_GENDER);
+    }
+
+
+  }
+
+  private static boolean genderIsKnown(String gender) {
+    return false;
   }
 }
