@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -65,6 +66,24 @@ public class StudentTest
   @Test
   void nullGenderThrowsNullPointerException() {
     assertThrows(NullPointerException.class, () -> new Student("Name", new ArrayList<>(), 3.45, null));
+  }
+
+  @Test
+  void studentCanTakeZeroClasses() {
+    Student kendra = new Student("Kendra", new ArrayList<>(), 2.1, "female");
+    String kendraString = kendra.toString();
+    assertThat(kendraString, containsString("is taking 0 classes"));
+  }
+
+  @Test
+  void studentCanTakeOnceClass() {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Java");
+    Student kendra = new Student("Kendra", classes, 2.1, "female");
+
+    String kendraString = kendra.toString();
+
+    assertThat(kendraString, containsString("is taking 1 class"));
   }
 
 }

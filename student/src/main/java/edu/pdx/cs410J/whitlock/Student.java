@@ -7,9 +7,11 @@ import java.util.ArrayList;
 /**                                                                                 
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
-public class Student extends Human {                                                
-                                                                                    
-  /**                                                                               
+public class Student extends Human {
+
+  private final ArrayList<String> classes;
+
+  /**
    * Creates a new <code>Student</code>                                             
    *                                                                                
    * @param name                                                                    
@@ -28,6 +30,8 @@ public class Student extends Human {
     validateNotNull(name);
     validateNotNull(classes);
     validateNotNull(gender);
+
+    this.classes = classes;
 
   }
 
@@ -50,7 +54,12 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    int numberOfClasses = getNumberOfClasses();
+    return "is taking " + numberOfClasses + " classes";
+  }
+
+  private int getNumberOfClasses() {
+    return classes.size();
   }
 
   /**
