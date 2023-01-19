@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.lang.Cow;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -27,6 +28,23 @@ public class StudentTest
   void allStudentsSayThisClassIsTooMuchWork() {
     Student student = new Student("Name", new ArrayList<>(), 0.0, "Doesn't matter");
     assertThat(student.says(), equalTo("This class is too much work"));
+  }
+
+  @Test
+  @Disabled
+  void daveStudentSaysWhatIsExpected() {
+    // Arrange (Given)
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Algorithm");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    Student dave = new Student("Dave", classes, 3.64, "male");
+
+    // Act (When)
+    String daveString = dave.toString();
+
+    // Assert (Then)
+    assertThat(daveString, equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java. He says \"This class is too much work\""));
   }
 
 }
