@@ -24,6 +24,17 @@ public class Student extends Human {
    */                                                                               
   public Student(String name, ArrayList<String> classes, double gpa, String gender) {
     super(name);
+
+    validateNotNull(name);
+    validateNotNull(classes);
+    validateNotNull(gender);
+
+  }
+
+  private static void validateNotNull(Object object) {
+    if (object == null) {
+      throw new NullPointerException();
+    }
   }
 
   /**                                                                               

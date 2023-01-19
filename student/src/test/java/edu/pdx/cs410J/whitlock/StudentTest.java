@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit tests for the Student class.  In addition to the JUnit annotations,
@@ -20,13 +21,17 @@ public class StudentTest
   @Test
   void studentNamedPatIsNamedPat() {
     String name = "Pat";
-    var pat = new Student(name, new ArrayList<>(), 0.0, "Doesn't matter");
+    var pat = createStudentNamed(name);
     assertThat(pat.getName(), equalTo(name));
+  }
+
+  private static Student createStudentNamed(String name) {
+    return new Student(name, new ArrayList<>(), 0.0, "Doesn't matter");
   }
 
   @Test
   void allStudentsSayThisClassIsTooMuchWork() {
-    Student student = new Student("Name", new ArrayList<>(), 0.0, "Doesn't matter");
+    Student student = createStudentNamed("Name");
     assertThat(student.says(), equalTo("This class is too much work"));
   }
 
@@ -45,6 +50,21 @@ public class StudentTest
 
     // Assert (Then)
     assertThat(daveString, equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java. He says \"This class is too much work\""));
+  }
+
+  @Test
+  void nullNameThrowsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> new Student(null, null, 3.45, null));
+  }
+
+  @Test
+  void nullClassesThrowsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> new Student("Name", null, 3.45, null));
+  }
+
+  @Test
+  void nullGenderThrowsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> new Student("Name", new ArrayList<>(), 3.45, null));
   }
 
 }
