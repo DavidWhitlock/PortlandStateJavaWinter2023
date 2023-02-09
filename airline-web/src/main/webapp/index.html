@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>HTML forms for interacting with the REST API</title>
+    <style type="text/css">
+        div {
+            padding-bottom: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>
+
+    This page contains a couple of HTML forms that GET and POST to the
+    REST API provided by your project.  These forms are <b>not</b>
+    submitted as part of the project.  You do <b>not</b> have to update
+    them.
+
+</h1>
+
+<h2>
+    These forms let you interact with the simple word/definition REST API that
+    is created by the project archetype.
+</h2>
+
+
+<div>
+    <form method="get" action="flights">
+        List all word/definition pairs <input type="submit" definition="Submit"/>
+    </form>
+</div>
+
+<div>
+    <form method="get" action="flights">
+        List definition for word <input name="word" type="text" size="10" title="word"/>
+        <input type="submit" definition="Submit"/>
+    </form>
+</div>
+
+<div>
+    <form method="post" action="flights">
+        Create a new word/definition pair <input name="word" type="text" size="10" title="word"/> /
+        <input name="definition" type="text" size="10" title="definition"/>
+        <input type="submit" definition="Submit"/>
+    </form>
+</div>
+
+</body>
+</html>
