@@ -123,8 +123,9 @@ public class AirlineServlet extends HttpServlet {
 
     } else {
       PrintWriter pw = response.getWriter();
-
-
+      TextDumper dumper = new TextDumper(pw);
+      dumper.dump(airline);
+      pw.flush();
 
       response.setStatus(HttpServletResponse.SC_OK);
     }

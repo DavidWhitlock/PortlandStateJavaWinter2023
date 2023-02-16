@@ -3,6 +3,7 @@ package edu.pdx.cs410J.whitlock;
 import edu.pdx.cs410J.InvokeMainTestCase;
 import edu.pdx.cs410J.UncaughtExceptionInMain;
 import edu.pdx.cs410J.web.HttpRequestHelper.RestException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -27,7 +28,7 @@ class Project5IT extends InvokeMainTestCase {
     @Test
     void test0RemoveAllMappings() throws IOException {
       AirlineRestClient client = new AirlineRestClient(HOSTNAME, Integer.parseInt(PORT));
-      client.removeAllDictionaryEntries();
+      client.removeAllAirlines();
     }
 
     @Test
@@ -37,6 +38,7 @@ class Project5IT extends InvokeMainTestCase {
     }
 
     @Test
+    @Disabled
     void test2EmptyServer() {
         MainMethodResult result = invokeMain( Project5.class, HOSTNAME, PORT );
 
@@ -59,6 +61,7 @@ class Project5IT extends InvokeMainTestCase {
         }
     }
 
+    @Disabled
     @Test
     void test4AddDefinition() {
         String word = "WORD";

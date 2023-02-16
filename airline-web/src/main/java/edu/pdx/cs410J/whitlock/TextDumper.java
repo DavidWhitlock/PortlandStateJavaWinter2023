@@ -11,12 +11,13 @@ public class TextDumper {
     this.writer = writer;
   }
 
-  public void dump(Map<String, String> dictionary) {
+  public void dump(Airline airline) {
     try (
       PrintWriter pw = new PrintWriter(this.writer)
     ){
-      for (Map.Entry<String, String> entry : dictionary.entrySet()) {
-        pw.println(entry.getKey() + " : " + entry.getValue());
+      String airlineName = airline.getName();
+      for (Flight flight : airline.getFlights()) {
+        pw.println(airlineName + " : " + flight.getNumber());
       }
 
       pw.flush();
