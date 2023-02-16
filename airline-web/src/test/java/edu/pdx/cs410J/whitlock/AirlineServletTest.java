@@ -21,10 +21,12 @@ import static org.mockito.Mockito.*;
 class AirlineServletTest {
 
   @Test
-  void initiallyServletContainsNoDictionaryEntries() throws IOException {
+  void gettingFlightsForNonExistentAirlineReturns404() throws IOException {
     AirlineServlet servlet = new AirlineServlet();
 
     HttpServletRequest request = mock(HttpServletRequest.class);
+    when(request.getParameter(AirlineServlet.AIRLINE_NAME_PARAMETER)).thenReturn("Airline");
+
     HttpServletResponse response = mock(HttpServletResponse.class);
     PrintWriter pw = mock(PrintWriter.class);
 
@@ -32,21 +34,20 @@ class AirlineServletTest {
 
     servlet.doGet(request, response);
 
-    // Nothing is written to the response's PrintWriter
-    verify(pw, never()).println(anyString());
-    verify(response).setStatus(HttpServletResponse.SC_OK);
+    verify(response).setStatus(HttpServletResponse.SC_NOT_FOUND);
   }
 
   @Test
-  void addOneWordToDictionary() throws IOException {
+  void addFlightInNewAirline() throws IOException {
     AirlineServlet servlet = new AirlineServlet();
 
-    String word = "TEST WORD";
-    String definition = "TEST DEFINITION";
+    String airlineName = "Airline";
+    int flightNumber = 123;
+    String flightNumberAsString = String.valueOf(flightNumber);
 
     HttpServletRequest request = mock(HttpServletRequest.class);
-    when(request.getParameter(AirlineServlet.AIRLINE_NAME_PARAMETER)).thenReturn(word);
-    when(request.getParameter(AirlineServlet.FLIGHT_NUMBER_PARAMETER)).thenReturn(definition);
+    when(request.getParameter(AirlineServlet.AIRLINE_NAME_PARAMETER)).thenReturn(airlineName);
+    when(request.getParameter(AirlineServlet.FLIGHT_NUMBER_PARAMETER)).thenReturn(flightNumberAsString);
 
     HttpServletResponse response = mock(HttpServletResponse.class);
 
@@ -58,7 +59,9 @@ class AirlineServletTest {
 
     servlet.doPost(request, response);
 
-    assertThat(stringWriter.toString(), containsString(Messages.definedWordAs(word, definition)));
+    String xml = stringWriter.toString();
+    assertThat(xml, containsString(airlineName));
+    assertThat(xml, containsString(flightNumberAsString));
 
     // Use an ArgumentCaptor when you want to make multiple assertions against the value passed to the mock
     ArgumentCaptor<Integer> statusCode = ArgumentCaptor.forClass(Integer.class);
@@ -66,7 +69,11 @@ class AirlineServletTest {
 
     assertThat(statusCode.getValue(), equalTo(HttpServletResponse.SC_OK));
 
-    assertThat(servlet.getDefinition(word), equalTo(definition));
+    Airline airline = servlet.getAirline(airlineName);
+    assertThat(airline.getName(), equalTo(airlineName));
+
+    Flight flight = airline.getFlights().iterator().next();
+    assertThat(flight.getNumber(), equalTo(flightNumber));
   }
 
 }
