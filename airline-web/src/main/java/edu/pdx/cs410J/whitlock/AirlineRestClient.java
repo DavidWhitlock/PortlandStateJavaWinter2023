@@ -60,11 +60,13 @@ public class AirlineRestClient
     String content = response.getContent();
 
     TextParser parser = new TextParser(new StringReader(content));
-    return parser.parse().get(word);
+    Map<String, String> dictionaryWithOneWord = parser.parse();
+    return dictionaryWithOneWord.get(word);
   }
 
   public void addDictionaryEntry(String word, String definition) throws IOException {
-    Response response = http.post(Map.of(AirlineServlet.WORD_PARAMETER, word, AirlineServlet.DEFINITION_PARAMETER, definition));
+    Response response = http.post(Map.of(AirlineServlet.WORD_PARAMETER, word,
+                                         AirlineServlet.DEFINITION_PARAMETER, definition));
     throwExceptionIfNotOkayHttpStatus(response);
   }
 
