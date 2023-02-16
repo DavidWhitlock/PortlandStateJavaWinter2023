@@ -17,8 +17,8 @@ import java.util.Map;
  * and their definitions.
  */
 public class AirlineServlet extends HttpServlet {
-  static final String WORD_PARAMETER = "word";
-  static final String DEFINITION_PARAMETER = "definition";
+  static final String AIRLINE_NAME_PARAMETER = "airline";
+  static final String FLIGHT_NUMBER_PARAMETER = "flightNumber";
 
   private final Map<String, String> dictionary = new HashMap<>();
 
@@ -33,7 +33,7 @@ public class AirlineServlet extends HttpServlet {
   {
       response.setContentType( "text/plain" );
 
-      String word = getParameter( WORD_PARAMETER, request );
+      String word = getParameter(AIRLINE_NAME_PARAMETER, request );
       if (word != null) {
           writeDefinition(word, response);
 
@@ -52,15 +52,15 @@ public class AirlineServlet extends HttpServlet {
   {
       response.setContentType( "text/plain" );
 
-      String word = getParameter(WORD_PARAMETER, request );
+      String word = getParameter(AIRLINE_NAME_PARAMETER, request );
       if (word == null) {
-          missingRequiredParameter(response, WORD_PARAMETER);
+          missingRequiredParameter(response, AIRLINE_NAME_PARAMETER);
           return;
       }
 
-      String definition = getParameter(DEFINITION_PARAMETER, request );
+      String definition = getParameter(FLIGHT_NUMBER_PARAMETER, request );
       if ( definition == null) {
-          missingRequiredParameter( response, DEFINITION_PARAMETER );
+          missingRequiredParameter( response, FLIGHT_NUMBER_PARAMETER);
           return;
       }
 
