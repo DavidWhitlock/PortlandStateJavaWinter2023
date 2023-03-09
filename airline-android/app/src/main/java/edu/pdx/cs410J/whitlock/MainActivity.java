@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             rightOperand = Integer.parseInt(rightOperandString);
 
         } catch (NumberFormatException ex) {
-            Toast.makeText(this, "Invalid number: " + leftOperandString, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid number: " + rightOperandString, Toast.LENGTH_SHORT).show();
             return;
         }
 
