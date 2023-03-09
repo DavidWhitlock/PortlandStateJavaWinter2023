@@ -45,7 +45,7 @@
             android:layout_weight="0.5"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/plus"
@@ -62,7 +62,7 @@
             android:layout_weight="0.5"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <Button
             android:layout_width="wrap_content"
@@ -70,14 +70,13 @@
             android:text="="
             android:onClick="computeSum"/>
 
-        <EditText
+        <TextView
             android:id="@+id/sum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="number"
             />
 
     </LinearLayout>
