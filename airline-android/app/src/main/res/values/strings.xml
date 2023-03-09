@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Airline</string>
+    <string name="hello">Hello Class!</string>
 </resources>
