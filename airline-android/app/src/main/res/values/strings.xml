@@ -3,4 +3,5 @@
     <string name="hello">Hello Class!</string>
     <string name="launch_calculator">Launch Calculator</string>
     <string name="return_to_main">Return to Main</string>
+    <string name="plus">+</string>
 </resources>
