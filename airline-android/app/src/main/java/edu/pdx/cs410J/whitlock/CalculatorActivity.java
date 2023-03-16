@@ -2,6 +2,7 @@ package edu.pdx.cs410J.whitlock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CalculatorActivity extends AppCompatActivity {
+
+    static final String SUM_VALUE = "SUM";
+    private Integer sum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class CalculatorActivity extends AppCompatActivity {
             return;
         }
 
-        int sum = leftOperand + rightOperand;
+        sum = leftOperand + rightOperand;
 
         TextView sumEditText = findViewById(R.id.sum);
         sumEditText.setText(String.valueOf(sum));
@@ -49,6 +53,10 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void returnToMain(View view) {
+        Intent data = new Intent();
+        data.putExtra(SUM_VALUE, this.sum);
+        setResult(RESULT_OK, data);
+
         finish();
     }
 }
